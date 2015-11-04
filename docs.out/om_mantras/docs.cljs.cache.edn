@@ -1,0 +1,2 @@
+;; Analyzed by ClojureScript 1.7.145
+{:use-macros {start-devcard-ui! devcards.core, defcard devcards.core}, :excludes #{}, :name om-mantras.docs, :imports nil, :requires {devcards.core devcards.core, om-mantras.docs.sortable om-mantras.docs.sortable}, :uses nil, :require-macros {devcards.core devcards.core}, :cljs.analyzer/constants {:seen #{:path :om_mantras.docs :func :name :documentation :card :main-obj :initial-data :options :heading}, :order [:path :func :om_mantras.docs :card :name :documentation :main-obj :initial-data :options :heading]}, :doc nil}
