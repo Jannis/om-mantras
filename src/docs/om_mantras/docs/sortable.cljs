@@ -324,7 +324,6 @@
   (fn [state _]
     (style-container4
       (sortable {:items (:items @state)
-                 :direction :horizontal
                  :element-fn #(dom/span nil %)
                  :change-fn #(swap! state assoc :items %)})))
   {:items ["First" "Second" "Third" "Fourth" "Fifth"]}
@@ -373,6 +372,7 @@
   (fn [state _]
     (style-container5
       (sortable {:items (:items @state)
+                 :direction :horizontal
                  :element-fn #(dom/span nil %)
                  :change-fn #(swap! state assoc :items %)})))
   {:items ["First" "Second" "Third" "Fourth" "Fifth"]}
