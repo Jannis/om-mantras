@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.145 {}
+// Compiled by ClojureScript 1.7.145 {:static-fns true, :optimize-constants true}
 goog.provide('garden.core');
 goog.require('cljs.core');
 goog.require('garden.compiler');
@@ -8,14 +8,14 @@ goog.require('garden.compiler');
  */
 garden.core.css = (function garden$core$css(var_args){
 var args__6159__auto__ = [];
-var len__6152__auto___23216 = arguments.length;
-var i__6153__auto___23217 = (0);
+var len__6152__auto___25040 = arguments.length;
+var i__6153__auto___25041 = (0);
 while(true){
-if((i__6153__auto___23217 < len__6152__auto___23216)){
-args__6159__auto__.push((arguments[i__6153__auto___23217]));
+if((i__6153__auto___25041 < len__6152__auto___25040)){
+args__6159__auto__.push((arguments[i__6153__auto___25041]));
 
-var G__23218 = (i__6153__auto___23217 + (1));
-i__6153__auto___23217 = G__23218;
+var G__25042 = (i__6153__auto___25041 + (1));
+i__6153__auto___25041 = G__25042;
 continue;
 } else {
 }
@@ -27,13 +27,13 @@ return garden.core.css.cljs$core$IFn$_invoke$arity$variadic(argseq__6160__auto__
 });
 
 garden.core.css.cljs$core$IFn$_invoke$arity$variadic = (function (rules){
-return cljs.core.apply.call(null,garden.compiler.compile_css,rules);
+return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(garden.compiler.compile_css,rules);
 });
 
 garden.core.css.cljs$lang$maxFixedArity = (0);
 
-garden.core.css.cljs$lang$applyTo = (function (seq23215){
-return garden.core.css.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23215));
+garden.core.css.cljs$lang$applyTo = (function (seq25039){
+return garden.core.css.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq25039));
 });
 /**
  * Convert a variable number of maps into a string of CSS for use with
@@ -41,14 +41,14 @@ return garden.core.css.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(n
  */
 garden.core.style = (function garden$core$style(var_args){
 var args__6159__auto__ = [];
-var len__6152__auto___23220 = arguments.length;
-var i__6153__auto___23221 = (0);
+var len__6152__auto___25044 = arguments.length;
+var i__6153__auto___25045 = (0);
 while(true){
-if((i__6153__auto___23221 < len__6152__auto___23220)){
-args__6159__auto__.push((arguments[i__6153__auto___23221]));
+if((i__6153__auto___25045 < len__6152__auto___25044)){
+args__6159__auto__.push((arguments[i__6153__auto___25045]));
 
-var G__23222 = (i__6153__auto___23221 + (1));
-i__6153__auto___23221 = G__23222;
+var G__25046 = (i__6153__auto___25045 + (1));
+i__6153__auto___25045 = G__25046;
 continue;
 } else {
 }
@@ -60,13 +60,11 @@ return garden.core.style.cljs$core$IFn$_invoke$arity$variadic(argseq__6160__auto
 });
 
 garden.core.style.cljs$core$IFn$_invoke$arity$variadic = (function (maps){
-return garden.compiler.compile_style.call(null,maps);
+return garden.compiler.compile_style(maps);
 });
 
 garden.core.style.cljs$lang$maxFixedArity = (0);
 
-garden.core.style.cljs$lang$applyTo = (function (seq23219){
-return garden.core.style.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23219));
+garden.core.style.cljs$lang$applyTo = (function (seq25043){
+return garden.core.style.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq25043));
 });
-
-//# sourceMappingURL=core.js.map

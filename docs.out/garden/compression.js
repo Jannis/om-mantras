@@ -1,25 +1,25 @@
-// Compiled by ClojureScript 1.7.145 {}
+// Compiled by ClojureScript 1.7.145 {:static-fns true, :optimize-constants true}
 goog.provide('garden.compression');
 goog.require('cljs.core');
 /**
  * Return a function which when given a string will return a map
  *   containing the chunk of text matched by re, it's size, and tag.
  */
-garden.compression.token_fn = (function garden$compression$token_fn(p__23367){
-var vec__23369 = p__23367;
-var tag = cljs.core.nth.call(null,vec__23369,(0),null);
-var re = cljs.core.nth.call(null,vec__23369,(1),null);
-return ((function (vec__23369,tag,re){
+garden.compression.token_fn = (function garden$compression$token_fn(p__25207){
+var vec__25209 = p__25207;
+var tag = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__25209,(0),null);
+var re = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__25209,(1),null);
+return ((function (vec__25209,tag,re){
 return (function (s){
-var temp__4425__auto__ = cljs.core.re_find.call(null,re,s);
+var temp__4425__auto__ = cljs.core.re_find(re,s);
 if(cljs.core.truth_(temp__4425__auto__)){
 var chunk = temp__4425__auto__;
-return new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"tag","tag",-1290361223),tag,new cljs.core.Keyword(null,"chunk","chunk",-1191159620),chunk,new cljs.core.Keyword(null,"size","size",1098693007),cljs.core.count.call(null,chunk)], null);
+return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$tag,tag,cljs.core.cst$kw$chunk,chunk,cljs.core.cst$kw$size,cljs.core.count(chunk)], null);
 } else {
 return null;
 }
 });
-;})(vec__23369,tag,re))
+;})(vec__25209,tag,re))
 });
 /**
  * Given an arbitrary number of [tag regex] pairs, return a function
@@ -29,14 +29,14 @@ return null;
  */
 garden.compression.tokenizer = (function garden$compression$tokenizer(var_args){
 var args__6159__auto__ = [];
-var len__6152__auto___23372 = arguments.length;
-var i__6153__auto___23373 = (0);
+var len__6152__auto___25212 = arguments.length;
+var i__6153__auto___25213 = (0);
 while(true){
-if((i__6153__auto___23373 < len__6152__auto___23372)){
-args__6159__auto__.push((arguments[i__6153__auto___23373]));
+if((i__6153__auto___25213 < len__6152__auto___25212)){
+args__6159__auto__.push((arguments[i__6153__auto___25213]));
 
-var G__23374 = (i__6153__auto___23373 + (1));
-i__6153__auto___23373 = G__23374;
+var G__25214 = (i__6153__auto___25213 + (1));
+i__6153__auto___25213 = G__25214;
 continue;
 } else {
 }
@@ -48,12 +48,12 @@ return garden.compression.tokenizer.cljs$core$IFn$_invoke$arity$variadic(argseq_
 });
 
 garden.compression.tokenizer.cljs$core$IFn$_invoke$arity$variadic = (function (tags_PLUS_regexes){
-var fs = cljs.core.map.call(null,garden.compression.token_fn,tags_PLUS_regexes);
+var fs = cljs.core.map.cljs$core$IFn$_invoke$arity$2(garden.compression.token_fn,tags_PLUS_regexes);
 return ((function (fs){
 return (function (s){
-return cljs.core.some.call(null,((function (fs){
-return (function (p1__23370_SHARP_){
-return p1__23370_SHARP_.call(null,s);
+return cljs.core.some(((function (fs){
+return (function (p1__25210_SHARP_){
+return (p1__25210_SHARP_.cljs$core$IFn$_invoke$arity$1 ? p1__25210_SHARP_.cljs$core$IFn$_invoke$arity$1(s) : p1__25210_SHARP_.call(null,s));
 });})(fs))
 ,fs);
 });
@@ -62,13 +62,13 @@ return p1__23370_SHARP_.call(null,s);
 
 garden.compression.tokenizer.cljs$lang$maxFixedArity = (0);
 
-garden.compression.tokenizer.cljs$lang$applyTo = (function (seq23371){
-return garden.compression.tokenizer.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq.call(null,seq23371));
+garden.compression.tokenizer.cljs$lang$applyTo = (function (seq25211){
+return garden.compression.tokenizer.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq25211));
 });
 /**
  * Tokenizer used during stylesheet compression.
  */
-garden.compression.stylesheet_tokenizer = garden.compression.tokenizer.call(null,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"string","string",-1989541586),/^\"(?:\\.|[^\"])*\"/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"r-brace","r-brace",-1335738887),/^\s*\{\s*/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"l-brace","l-brace",613286657),/^;?\s*}/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"r-paren","r-paren",-1688338021),/^\s*\(\s*/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"l-paren","l-paren",2052672514),/^\s*\)/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"comma","comma",1699024745),/^,\s*/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"colon","colon",-965200945),/^:\s*/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"semicolon","semicolon",797086549),/^;/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"space+","space+",378127624),/^ +/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"white-space+","white-space+",1452157162),/^\s+/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"any","any",1705907423),/^./], null));
+garden.compression.stylesheet_tokenizer = garden.compression.tokenizer.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$string,/^\"(?:\\.|[^\"])*\"/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$r_DASH_brace,/^\s*\{\s*/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$l_DASH_brace,/^;?\s*}/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$r_DASH_paren,/^\s*\(\s*/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$l_DASH_paren,/^\s*\)/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$comma,/^,\s*/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$colon,/^:\s*/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$semicolon,/^;/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$space_PLUS_,/^ +/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$white_DASH_space_PLUS_,/^\s+/], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$any,/^./], null)], 0));
 /**
  * Compress a string of CSS using a basic compressor.
  */
@@ -76,16 +76,16 @@ garden.compression.compress_stylesheet = (function garden$compression$compress_s
 var s1 = stylesheet;
 var s2 = "";
 while(true){
-var temp__4423__auto__ = garden.compression.stylesheet_tokenizer.call(null,s1);
+var temp__4423__auto__ = (garden.compression.stylesheet_tokenizer.cljs$core$IFn$_invoke$arity$1 ? garden.compression.stylesheet_tokenizer.cljs$core$IFn$_invoke$arity$1(s1) : garden.compression.stylesheet_tokenizer.call(null,s1));
 if(cljs.core.truth_(temp__4423__auto__)){
-var map__23378 = temp__4423__auto__;
-var map__23378__$1 = ((((!((map__23378 == null)))?((((map__23378.cljs$lang$protocol_mask$partition0$ & (64))) || (map__23378.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__23378):map__23378);
-var tag = cljs.core.get.call(null,map__23378__$1,new cljs.core.Keyword(null,"tag","tag",-1290361223));
-var chunk = cljs.core.get.call(null,map__23378__$1,new cljs.core.Keyword(null,"chunk","chunk",-1191159620));
-var size = cljs.core.get.call(null,map__23378__$1,new cljs.core.Keyword(null,"size","size",1098693007));
-var G__23381 = cljs.core.subs.call(null,s1,size);
-var G__23382 = [cljs.core.str(s2),cljs.core.str((function (){var G__23380 = (((tag instanceof cljs.core.Keyword))?tag.fqn:null);
-switch (G__23380) {
+var map__25218 = temp__4423__auto__;
+var map__25218__$1 = ((((!((map__25218 == null)))?((((map__25218.cljs$lang$protocol_mask$partition0$ & (64))) || (map__25218.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__25218):map__25218);
+var tag = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__25218__$1,cljs.core.cst$kw$tag);
+var chunk = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__25218__$1,cljs.core.cst$kw$chunk);
+var size = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__25218__$1,cljs.core.cst$kw$size);
+var G__25221 = cljs.core.subs.cljs$core$IFn$_invoke$arity$2(s1,size);
+var G__25222 = [cljs.core.str(s2),cljs.core.str((function (){var G__25220 = (((tag instanceof cljs.core.Keyword))?tag.fqn:null);
+switch (G__25220) {
 case "l-brace":
 return "}";
 
@@ -131,8 +131,8 @@ return chunk;
 
 }
 })())].join('');
-s1 = G__23381;
-s2 = G__23382;
+s1 = G__25221;
+s2 = G__25222;
 continue;
 } else {
 return s2;
@@ -140,5 +140,3 @@ return s2;
 break;
 }
 });
-
-//# sourceMappingURL=compression.js.map

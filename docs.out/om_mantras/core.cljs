@@ -1,1 +1,0 @@
-(ns om-mantras.core)
