@@ -31,6 +31,14 @@
   (comp
     (cljs :source-map true
           :optimizations :none
+          :pretty-print true
+          :compiler-options {:devcards true})))
+
+(deftask build-docs
+  []
+  (comp
+    (cljs :optimizations :advanced
+          :pretty-print false
           :compiler-options {:devcards true})))
 
 (deftask dev
@@ -41,3 +49,8 @@
     (reload)
     (build-dev)
     (serve :dir "target")))
+
+(deftask docs
+  []
+  (comp
+    (build-docs)))
