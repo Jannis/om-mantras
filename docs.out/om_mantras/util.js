@@ -2,9 +2,9 @@
 goog.provide('om_mantras.util');
 goog.require('cljs.core');
 om_mantras.util.indexes_of = (function om_mantras$util$indexes_of(x,coll){
-return cljs.core.keep_indexed.call(null,(function (p1__23912_SHARP_,p2__23911_SHARP_){
-if(cljs.core._EQ_.call(null,x,p2__23911_SHARP_)){
-return p1__23912_SHARP_;
+return cljs.core.keep_indexed.call(null,(function (p1__23817_SHARP_,p2__23816_SHARP_){
+if(cljs.core._EQ_.call(null,x,p2__23816_SHARP_)){
+return p1__23817_SHARP_;
 } else {
 return null;
 }
