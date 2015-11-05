@@ -7,7 +7,7 @@
   (let [props (cond-> x (om/component? x) om/props)
         key-fn (:key-fn props)]
     (if key-fn
-      (key-fn [(:item props)])
+      (key-fn (:item props))
       (:item props))))
 
 (defui SortableItem
