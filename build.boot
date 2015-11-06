@@ -23,7 +23,7 @@
          '[boot.git :refer [last-commit]]
          '[pandeiro.boot-http :refer [serve]])
 
-(def version "0.1.0-alpha3")
+(def version "0.1.0-alpha3-SNAPSHOT")
 
 (bootlaces! version)
 

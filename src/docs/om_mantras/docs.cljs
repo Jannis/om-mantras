@@ -41,7 +41,7 @@
   in `project.clj` or `build.boot`:
 
   ```
-  [\"om-mantras\" \"0.1.0-alpha3\"]
+  [\"om-mantras\" \"0.1.0-alpha3-SNAPSHOT\"]
   ```
 
   To use the components in your app, require `om-mantras.<component>` and
