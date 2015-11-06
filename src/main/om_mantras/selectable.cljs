@@ -95,7 +95,6 @@
 
   (update-selected [this items]
     (om/update-state! this assoc :selected items)
-    (.update-caret this (:caret (om/get-state this)))
     (some-> this om/props :change-fn (apply [items])))
 
   (select-match [this match]
@@ -106,37 +105,49 @@
         (->> (concat before [match] after)
              (into [])
              (.update-selected this)))
-      (.update-caret this (-> this om/get-state :caret inc))
+      (.update-caret this inc)
       (.update-text this "")))
 
   (show-matches [this show?]
     (om/update-state! this assoc :show-matches show?))
 
   (focus [this e]
-    (-> this (om/react-ref :input/box) (om/react-ref :input/input) dom/node .focus)
+    (-> this
+        (om/react-ref :input/box)
+        (om/react-ref :input/input)
+        dom/node
+        .focus)
     (.show-matches this true))
 
   (set-active-match [this child]
     (om/update-state! this assoc :active-match (-> child om/props :item)))
 
-  (update-caret [this position]
+  (update-caret [this f]
     (let [selected (:selected (om/get-state this))]
-      (->> (max 0 (min (count selected) position))
-           (om/update-state! this assoc :caret))))
+      (om/update-state! this update :caret
+                        (fn [caret]
+                          (-> (f caret)
+                              (max 0)
+                              (min (count selected)))))))
 
   (key-backspace [this e]
     (when (empty? (:text (om/get-state this)))
-      (let [selected (->> this om/get-state :selected butlast (into []))]
-        (.update-selected this selected))
-      (.update-text this "")))
+      (let [selected (:selected (om/get-state this))
+            caret (:caret (om/get-state this))]
+        (let [[before after] (split-at caret selected)]
+          (->> (concat (butlast before) after)
+               (into [])
+               (.update-selected this)))
+        (.update-caret this dec)
+        (.update-text this ""))))
 
   (key-left [this e]
     (when (empty? (:text (om/get-state this)))
-      (.update-caret this (-> this om/get-state :caret dec))))
+      (.update-caret this dec)))
 
   (key-right [this e]
     (when (empty? (:text (om/get-state this)))
-      (.update-caret this (-> this om/get-state :caret inc))))
+      (.update-caret this inc)))
 
   (key-escape [this e]
     (.show-matches this false))
@@ -174,7 +185,7 @@
   (componentWillMount [this]
     (.update-text this "")
     (.update-selected this [])
-    (.update-caret this 0)
+    (.update-caret this (constantly 0))
     (.show-matches this false))
 
   (componentWillReceiveProps [this props]
