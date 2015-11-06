@@ -45,7 +45,6 @@
   []
   (comp
     (watch)
-    (speak)
     (reload)
     (build-dev)
     (serve :dir "target")))
