@@ -2,6 +2,7 @@
 goog.provide('om_mantras.docs');
 goog.require('cljs.core');
 goog.require('devcards.core');
+goog.require('om_mantras.docs.selectable');
 goog.require('om_mantras.docs.sortable');
 cljs.core.enable_console_print_BANG_();
 devcards.core.start_devcard_ui_BANG__STAR_();

@@ -22,9 +22,9 @@ cljs.pprint.pprint.cljs$core$IFn$_invoke$arity$2(obj,(new cljs.core.StringBuffer
 return [cljs.core.str(sb)].join('');
 });
 devcards.util.utils.pprint_code = (function devcards$util$utils$pprint_code(code){
-var _STAR_print_pprint_dispatch_STAR_24956 = cljs.pprint._STAR_print_pprint_dispatch_STAR_;
+var _STAR_print_pprint_dispatch_STAR_27660 = cljs.pprint._STAR_print_pprint_dispatch_STAR_;
 cljs.pprint._STAR_print_pprint_dispatch_STAR_ = cljs.pprint.code_dispatch;
 
 try{return devcards.util.utils.pprint_str(code);
-}finally {cljs.pprint._STAR_print_pprint_dispatch_STAR_ = _STAR_print_pprint_dispatch_STAR_24956;
+}finally {cljs.pprint._STAR_print_pprint_dispatch_STAR_ = _STAR_print_pprint_dispatch_STAR_27660;
 }});
