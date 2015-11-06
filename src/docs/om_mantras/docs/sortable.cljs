@@ -12,7 +12,7 @@
   collection of items as a vertical or horizontal list and reordering
   its items using drag and drop. Sortable can be used in flexible ways,
   preserves all freedom of styling and allows custom elements to be
-  defined for the items. It also supports a callback to to notify the
+  defined for the items. It also supports a callback to notify the
   outside world whenever the order of items has changed.")
 
 (defcard-doc

@@ -18,7 +18,7 @@
 
 (task-options!
   pom {:project "om-mantras"
-       :version "0.1.0-SNAPSHOT"})
+       :version "0.1.0-alpha1-SNAPSHOT"})
 
 (require '[adzerk.boot-cljs :refer [cljs]]
          '[adzerk.boot-reload :refer [reload]]
