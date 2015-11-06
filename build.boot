@@ -6,6 +6,7 @@
   :dependencies '[; Boot setup
                   [adzerk/boot-cljs "1.7.170-1"]
                   [adzerk/boot-reload "0.4.1"]
+                  [adzerk/bootlaces "0.1.13"]
                   [pandeiro/boot-http "0.7.0-SNAPSHOT"]
 
                   ; Library dependencies
@@ -17,10 +18,11 @@
                   [garden "1.3.0-SNAPSHOT"]])
 
 (task-options!
-  pom {:project "om-mantras"
-       :version "0.1.0-alpha2-SNAPSHOT"})
+  pom {:project 'om-mantras
+       :version "0.1.0-alpha2"})
 
 (require '[adzerk.boot-cljs :refer [cljs]]
+         '[adzerk.bootlaces :refer :all]
          '[adzerk.boot-reload :refer [reload]]
          '[pandeiro.boot-http :refer [serve]])
 
