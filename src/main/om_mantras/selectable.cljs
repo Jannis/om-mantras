@@ -93,20 +93,20 @@
     (.recalculate-active-match this)
     (.show-matches this true))
 
-  (update-selected [this items]
-    (om/update-state! this assoc :selected items)
-    (some-> this om/props :change-fn (apply [items])))
+  (update-selected [this f]
+    (let [selected (f (:selected (om/get-state this)))]
+      (om/update-state! this assoc :selected selected)
+      (some-> this om/props :change-fn (apply [selected]))))
 
   (select-match [this match]
     (let [match (cond-> match (om/component? match) (-> om/props :item))
-          selected (:selected (om/get-state this))
           caret (:caret (om/get-state this))]
-      (let [[before after] (split-at caret selected)]
-        (->> (concat before [match] after)
-             (into [])
-             (.update-selected this)))
-      (.update-caret this inc)
-      (.update-text this "")))
+      (.update-selected this
+                        (fn [selected]
+                          (let [[before after] (split-at caret selected)]
+                            (into [] (concat before [match] after))))))
+    (.update-caret this inc)
+    (.update-text this ""))
 
   (show-matches [this show?]
     (om/update-state! this assoc :show-matches show?))
@@ -132,25 +132,27 @@
 
   (key-backspace [this e]
     (when (empty? (:text (om/get-state this)))
-      (let [selected (:selected (om/get-state this))
-            caret (:caret (om/get-state this))]
-        (let [[before after] (split-at caret selected)]
-          (->> (concat (butlast before) after)
-               (into [])
-               (.update-selected this)))
-        (.update-caret this dec)
-        (.update-text this ""))))
-
-  (key-left [this e]
-    (when (empty? (:text (om/get-state this)))
+      (let [caret (:caret (om/get-state this))]
+        (.update-selected this
+                          (fn [selected]
+                            (let [[before after] (split-at caret selected)]
+                              (into [] (concat (butlast before) after))))))
       (.update-caret this dec)))
 
-  (key-right [this e]
+  (key-delete [this e]
     (when (empty? (:text (om/get-state this)))
-      (.update-caret this inc)))
+      (let [caret (:caret (om/get-state this))]
+        (.update-selected this
+                          (fn [selected]
+                            (let [[before after] (split-at caret selected)]
+                              (into [] (concat before (rest after)))))))
+      (.update-caret this identity)))
 
   (key-escape [this e]
     (.show-matches this false))
+
+  (key-return [this e]
+    (some->> this om/get-state :active-match (.select-match this)))
 
   (key-up [this e]
     (let [{:keys [matches active-match]} (om/get-state this)
@@ -168,23 +170,39 @@
            (om/update-state! this assoc :active-match)))
     (.preventDefault e))
 
-  (key-return [this e]
-    (some->> this om/get-state :active-match (.select-match this)))
+  (key-left [this e]
+    (when (empty? (:text (om/get-state this)))
+      (.update-caret this dec)))
+
+  (key-right [this e]
+    (when (empty? (:text (om/get-state this)))
+      (.update-caret this inc)))
+
+  (key-home [this e]
+    (when (empty? (:text (om/get-state this)))
+      (.update-caret this (constantly 0))))
+
+  (key-end [this e]
+    (when (empty? (:text (om/get-state this)))
+      (.update-caret this #(count (:selected (om/get-state this))))))
 
   (key-press [this e]
     (case (.-keyCode e)
       8  (.key-backspace this e)
+      46 (.key-delete this e)
       27 (.key-escape this e)
+      13 (.key-return this e)
       38 (.key-up this e)
       40 (.key-down this e)
-      13 (.key-return this e)
       37 (.key-left this e)
       39 (.key-right this e)
+      36 (.key-home this e)
+      35 (.key-end this e)
          true))
 
   (componentWillMount [this]
     (.update-text this "")
-    (.update-selected this [])
+    (.update-selected this (constantly []))
     (.update-caret this (constantly 0))
     (.show-matches this false))
 
