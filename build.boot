@@ -11,7 +11,7 @@
 
                   ; Library dependencies
                   [org.clojure/clojurescript "1.7.170"]
-                  [org.omcljs/om "1.0.0-alpha14-SNAPSHOT"]
+                  [org.omcljs/om "1.0.0-alpha18-SNAPSHOT"]
 
                   ; Development dependencies
                   [devcards "0.2.0-8"]
