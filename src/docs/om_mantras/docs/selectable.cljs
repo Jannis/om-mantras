@@ -176,6 +176,9 @@
   {:inspect-data true :history false})
 
 (defcard
+  "## Styling")
+
+(defcard
   "Basic styling
 
   ```

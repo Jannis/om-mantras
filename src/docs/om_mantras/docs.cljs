@@ -1,5 +1,6 @@
 (ns om-mantras.docs
   (:require [devcards.core :refer-macros [defcard start-devcard-ui!]]
+            [om-mantras.docs.progressive-image]
             [om-mantras.docs.selectable]
             [om-mantras.docs.sortable]))
 
